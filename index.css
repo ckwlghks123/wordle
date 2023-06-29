@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.hamburger {
+  width: 40px;
+}
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+main {
+  display: flex;
+  justify-content: center;
+}
+
+main .board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 480px;
+  width: 400px;
+}
+
+main .cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+main .cards .card {
+  width: 70px;
+  height: 70px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
