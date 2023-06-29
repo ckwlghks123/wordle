@@ -1,4 +1,4 @@
-function cardRender(current, result) {
+function inputRender(current, result) {
   const currentChance = document.querySelectorAll(".cards")[result.length];
   const alphabet = currentChance.children;
 
@@ -16,18 +16,39 @@ function cardRender(current, result) {
   });
 }
 
+function handleInput(text, current, result) {
+  current.push(text);
+  inputRender(current, result);
+}
+
 function handleClick(e, current, result) {
-  console.log(e.target.textContent);
-  current.push(e.target.textContent);
-  cardRender(current, result);
+  if (current.length > 4) return;
+  if (e.target.className !== "key") return;
+  handleInput(e.target.textContent, current, result);
+}
+
+function handleKeyDown(e, current, result) {
+  e.preventDefault();
+  if (e.which === 8) {
+    current.pop();
+    inputRender(current, result);
+  }
+  if (e.which > 186) return;
+  if (current.length > 4) return;
+  if (e.type !== "keydown") return;
+  if (e.key.length > 1) return;
+  handleInput(e.key.toUpperCase(), current, result);
 }
 
 function init() {
+  console.log("game start");
   const currentArr = [];
   const resultArr = [];
-  console.log("game start");
   window.addEventListener("click", (e) =>
     handleClick(e, currentArr, resultArr)
+  );
+  window.addEventListener("keydown", (e) =>
+    handleKeyDown(e, currentArr, resultArr)
   );
 }
 
@@ -35,7 +56,6 @@ init();
 
 // TODO
 // 1. 글자지우기 기능
-// 2. 키보드로 글자입력기능
 // 3. 엔터누르면 result에 current 푸쉬해서 입력
 // 4. 정답 단어 생성
 // 5. result 단어들이랑 정답 단어 비교해서 정답단어의 알파벳과자리가
