@@ -5,6 +5,11 @@ header {
   padding: 20px;
   margin-bottom: 80px;
 }
+
+svg {
+  pointer-events: none;
+}
+
 .hamburger {
   width: 40px;
 }
