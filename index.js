@@ -38,6 +38,9 @@ function handleDelete(current, result) {
 
 function handleClick(e, current, result) {
   if (result.length === 6) return;
+  if (e.target.classList.contains("enter")) {
+    checkAnswer(current, result);
+  }
   if (e.target.classList.contains("delete")) {
     handleDelete(current, result);
   }
